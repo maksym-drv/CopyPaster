@@ -1,5 +1,5 @@
 from tkinter import Tk, StringVar, Listbox, \
-    EXTENDED, Button, Label, END
+    EXTENDED, Button, END
 import pyperclip
 
 class Application:
@@ -14,8 +14,11 @@ class Application:
             pyperclip.copy(seltext)
             app.destroy()
 
+        def on_closing():
+            pyperclip.copy("")
+            app.destroy()
+
         app = Tk()
-        choices = StringVar(app)
 
         app.title("Буфер обмена")
 
@@ -23,14 +26,11 @@ class Application:
         height = app.winfo_screenheight()
         app.geometry(f'{int(width/2)}x{int(height/3.5)}')
 
-        listbox1 = Listbox(app, width=90,selectmode = EXTENDED)
-        listbox1.pack()
+        listbox1 = Listbox(app, selectmode = EXTENDED)
+        listbox1.grid(row=1, column=0, sticky="nsew")
 
-        button1 = Button(app, text = "Вставить", command = get_list)
-        button1.pack()
-
-        label1 = Label(app, textvariable = choices)
-        label1.pack()
+        button1 = Button(app, text = "Вставить", command = get_list, height=2)
+        button1.grid(row=2, column=0, sticky="nsew")
 
         for text in self.clipboard:
             listbox1.insert(END, text)
@@ -40,5 +40,10 @@ class Application:
         app.attributes('-topmost', True)
         app.update()
         app.attributes('-topmost', False)
+
+        app.protocol("WM_DELETE_WINDOW", on_closing)
+
+        app.columnconfigure(0, weight=1)
+        app.rowconfigure(1, weight=1)
 
         app.mainloop()
