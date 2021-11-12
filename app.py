@@ -1,4 +1,4 @@
-from tkinter import Tk, StringVar, Listbox, \
+from tkinter import Tk, Listbox, \
     EXTENDED, Button, END
 import pyperclip
 
