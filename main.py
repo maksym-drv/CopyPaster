@@ -5,7 +5,9 @@ import json
 import keyboard
 import asyncio
 from app import Application
+from check import Check
 
+check = Check()
 pyperclip.copy(json.dumps([]))
 
 def copy_clipboard():
@@ -20,7 +22,7 @@ def cut_clipboard():
 
 def click_copy():
     pya.position() # позиция курсора
-    clipboard = json.loads(pyperclip.paste())
+    clipboard = check.check_clipboard()
     new_txt = copy_clipboard()
     add = True
     for data in clipboard:
@@ -33,7 +35,7 @@ def click_copy():
 
 def click_cut():
     pya.position() # позиция курсора
-    clipboard = json.loads(pyperclip.paste())
+    clipboard = check.check_clipboard()
     new_txt = cut_clipboard()
     add = True
     for data in clipboard:
@@ -45,10 +47,8 @@ def click_cut():
     pyperclip.copy(json.dumps(clipboard))
 
 def click_paste():
-    empty = False
-    if pyperclip.paste() == '[]':
-        empty = True
-    clipboard = json.loads(pyperclip.paste())
+    clipboard = check.check_clipboard()
+    empty = check.check_empty()
     Application(clipboard).make_app()
     if not empty:
         pya.position() # позиция курсора
