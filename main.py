@@ -57,9 +57,9 @@ def click_paste():
     time.sleep(.3)
     
 async def main():
-    keyboard.add_hotkey('ctrl+f10', click_copy)
-    keyboard.add_hotkey('ctrl+f11', click_paste)
-    keyboard.add_hotkey('ctrl+f9', click_cut)
+    keyboard.add_hotkey('ctrl+alt+a', click_copy)
+    keyboard.add_hotkey('ctrl+alt+z', click_paste)
+    keyboard.add_hotkey('ctrl+alt+x', click_cut)
     keyboard.wait()
 
 if __name__ == "__main__":

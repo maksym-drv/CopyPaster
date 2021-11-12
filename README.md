@@ -5,6 +5,6 @@
 <p>Win + R -> shell:startup</p>
 <p>Paste the program shortcut into the folder</p>
 <h2>Usage</h2>
-<p>ctrl + f11 - paste</p>
-<p>ctrl + f10 - copy</p>
-<p>ctrl + f9 - cut</p>
+<p>ctrl + alt + a = copy</p>
+<p>ctrl + alt + z = paste</p>
+<p>ctrl + alt + x = cut</p>
