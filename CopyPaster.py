@@ -8,16 +8,15 @@ from app import Application
 from check import Check
 
 check = Check()
-pyperclip.copy(json.dumps([]))
 
 def copy_clipboard():
     pya.hotkey('ctrl', 'c')
-    time.sleep(.3)
+    time.sleep(.2)
     return pyperclip.paste()
 
 def cut_clipboard():
     pya.hotkey('ctrl', 'x')
-    time.sleep(.3)
+    time.sleep(.2)
     return pyperclip.paste()
 
 def click_copy():
@@ -57,9 +56,9 @@ def click_paste():
     time.sleep(.3)
     
 async def main():
-    keyboard.add_hotkey('ctrl+alt+a', click_copy)
-    keyboard.add_hotkey('ctrl+alt+z', click_paste)
-    keyboard.add_hotkey('ctrl+alt+x', click_cut)
+    keyboard.add_hotkey('ctrl+f11', click_copy)
+    keyboard.add_hotkey('ctrl+f12', click_paste)
+    keyboard.add_hotkey('ctrl+f10', click_cut)
     keyboard.wait()
 
 if __name__ == "__main__":

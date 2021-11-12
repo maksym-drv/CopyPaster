@@ -9,8 +9,8 @@ class Application:
     def make_app(self):
 
         def get_list():
-            sel = listbox1.curselection()
-            seltext = '\n'.join([listbox1.get(x) for x in sel])
+            sel = listbox.curselection()
+            seltext = '\n'.join([listbox.get(x) for x in sel])
             pyperclip.copy(seltext)
             app.destroy()
 
@@ -26,16 +26,16 @@ class Application:
         height = app.winfo_screenheight()
         app.geometry(f'{int(width/2)}x{int(height/3.5)}')
 
-        listbox1 = Listbox(app, selectmode = EXTENDED)
-        listbox1.grid(row=1, column=0, sticky="nsew")
+        listbox = Listbox(app, selectmode = EXTENDED)
+        listbox.grid(row=1, column=0, sticky="nsew")
 
-        button1 = Button(app, text = "Вставить", command = get_list, height=2)
-        button1.grid(row=2, column=0, sticky="nsew")
+        button = Button(app, text = "Вставить", command = get_list, height=2)
+        button.grid(row=2, column=0, sticky="nsew")
 
         for text in self.clipboard:
-            listbox1.insert(END, text)
+            listbox.insert(END, text)
 
-        listbox1.selection_set(3)
+        listbox.selection_set(3)
 
         app.attributes('-topmost', True)
         app.update()
@@ -45,5 +45,8 @@ class Application:
 
         app.columnconfigure(0, weight=1)
         app.rowconfigure(1, weight=1)
+
+        listbox.configure(background="#242424", fg="white")
+        button.configure(background="#434343", fg="white")
 
         app.mainloop()
