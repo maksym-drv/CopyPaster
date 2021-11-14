@@ -25,12 +25,7 @@ def click_copy():
     new_txt = copy_clipboard()
     if not clipboard == new_txt:
         clipboard_list = check.check_clipboard(clipboard)
-        add = True
-        for data in clipboard_list:
-            if new_txt == data:
-                add = False
-                break
-        if add:
+        if check.check_new_text(clipboard_list, new_txt):
             clipboard_list.append(new_txt)
         pyperclip.copy(json.dumps(clipboard_list))
 
@@ -40,12 +35,7 @@ def click_cut():
     new_txt = cut_clipboard()
     if not clipboard == new_txt:
         clipboard_list = check.check_clipboard(clipboard)
-        add = True
-        for data in clipboard_list:
-            if new_txt == data:
-                add = False
-                break
-        if add:
+        if check.check_new_text(clipboard_list, new_txt):
             clipboard_list.append(new_txt)
         pyperclip.copy(json.dumps(clipboard_list))
 

@@ -15,3 +15,11 @@ class Check:
         except:
             lst = []
             return lst
+    
+    def check_new_text(self, clipboard, new_txt):
+        add = True
+        for data in clipboard:
+            if new_txt == data:
+                add = False
+                return add
+        return add
