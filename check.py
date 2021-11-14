@@ -8,10 +8,10 @@ class Check:
         else:
             return False
 
-    def check_clipboard(self):
+    def check_clipboard(self, clipboard):
         try:
-            clipboard = json.loads(pyperclip.paste())
-            return clipboard
+            lst = json.loads(clipboard)
+            return lst
         except:
             lst = []
             return lst

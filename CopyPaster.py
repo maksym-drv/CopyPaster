@@ -21,38 +21,43 @@ def cut_clipboard():
 
 def click_copy():
     pya.position() # позиция курсора
-    clipboard = check.check_clipboard()
+    clipboard = pyperclip.paste()
     new_txt = copy_clipboard()
-    add = True
-    for data in clipboard:
-        if new_txt == data:
-            add = False
-            break
-    if add:
-        clipboard.append(new_txt)
-    pyperclip.copy(json.dumps(clipboard))
+    if not clipboard == new_txt:
+        clipboard_list = check.check_clipboard(clipboard)
+        add = True
+        for data in clipboard_list:
+            if new_txt == data:
+                add = False
+                break
+        if add:
+            clipboard_list.append(new_txt)
+        pyperclip.copy(json.dumps(clipboard_list))
 
 def click_cut():
     pya.position() # позиция курсора
-    clipboard = check.check_clipboard()
+    clipboard = pyperclip.paste()
     new_txt = cut_clipboard()
-    add = True
-    for data in clipboard:
-        if new_txt == data:
-            add = False
-            break
-    if add:
-        clipboard.append(new_txt)
-    pyperclip.copy(json.dumps(clipboard))
+    if not clipboard == new_txt:
+        clipboard_list = check.check_clipboard(clipboard)
+        add = True
+        for data in clipboard_list:
+            if new_txt == data:
+                add = False
+                break
+        if add:
+            clipboard_list.append(new_txt)
+        pyperclip.copy(json.dumps(clipboard_list))
 
 def click_paste():
-    clipboard = check.check_clipboard()
+    clipboard = pyperclip.paste()
+    clipboard_list = check.check_clipboard(clipboard)
     empty = check.check_empty()
-    Application(clipboard).make_app()
+    Application(clipboard_list).make_app()
     if not empty:
         pya.position() # позиция курсора
         pya.hotkey('ctrl', 'v')
-    pyperclip.copy(json.dumps(clipboard))
+    pyperclip.copy(json.dumps(clipboard_list))
     time.sleep(.3)
     
 async def main():
