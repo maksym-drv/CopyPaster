@@ -5,9 +5,7 @@ import json
 import keyboard
 import asyncio
 from app import Application
-from check import Check
-
-check = Check()
+from check import Check as check
 
 def copy_clipboard():
     pya.hotkey('ctrl', 'c')
@@ -42,9 +40,8 @@ def click_cut():
 def click_paste():
     clipboard = pyperclip.paste()
     clipboard_list = check.check_clipboard(clipboard)
-    empty = check.check_empty()
     Application(clipboard_list).make_app()
-    if not empty:
+    if check.check_output(clipboard):
         pya.position() # позиция курсора
         pya.hotkey('ctrl', 'v')
     pyperclip.copy(json.dumps(clipboard_list))
