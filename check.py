@@ -17,7 +17,6 @@ class Check:
             return lst
     
     def check_new_text(clipboard, new_txt):
-        add = True
         num = 0
         for data in clipboard:
             if new_txt == data:
