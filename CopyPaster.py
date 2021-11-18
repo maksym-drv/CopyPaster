@@ -23,8 +23,8 @@ def click_copy():
     new_txt = copy_clipboard()
     if not clipboard == new_txt:
         clipboard_list = check.check_clipboard(clipboard)
-        if check.check_new_text(clipboard_list, new_txt):
-            clipboard_list.append(new_txt)
+        check.check_new_text(clipboard_list, new_txt)
+        clipboard_list.insert(0, new_txt)
         pyperclip.copy(json.dumps(clipboard_list))
 
 def click_cut():
@@ -33,8 +33,8 @@ def click_cut():
     new_txt = cut_clipboard()
     if not clipboard == new_txt:
         clipboard_list = check.check_clipboard(clipboard)
-        if check.check_new_text(clipboard_list, new_txt):
-            clipboard_list.append(new_txt)
+        check.check_new_text(clipboard_list, new_txt)
+        clipboard_list.insert(0, new_txt)
         pyperclip.copy(json.dumps(clipboard_list))
 
 def click_paste():

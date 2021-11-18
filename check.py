@@ -18,8 +18,9 @@ class Check:
     
     def check_new_text(clipboard, new_txt):
         add = True
+        num = 0
         for data in clipboard:
             if new_txt == data:
-                add = False
-                return add
-        return add
+                clipboard.pop(num)
+                return
+            num += 1
