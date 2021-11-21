@@ -1,12 +1,13 @@
+from tkinter.constants import FALSE
 import pyperclip
 import json
 
 class Check:
     def check_output(clipboard):
         if pyperclip.paste() == clipboard:
-            return True
-        else:
             return False
+        else:
+            return True
 
     def check_clipboard(clipboard):
         try:
